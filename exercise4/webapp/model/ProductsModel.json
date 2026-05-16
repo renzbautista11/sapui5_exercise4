@@ -1,0 +1,69 @@
+{
+  "Products": [
+    {
+      "ProductID": 1,
+      "ProductName": "iPhone SE 64GB midnight",
+      "SupplierID": 1,
+      "CategoryID": 1,
+      "QuantityPerUnit": 128,
+      "UnitPrice": 29990,
+      "UnitsInStock": 64,
+      "UnitsOnOrder": 0,
+      "ReorderLevel": 5,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    },
+    {
+      "ProductID": 2,
+      "ProductName": "iPhone 14 128GB Midnight",
+      "SupplierID": 1,
+      "CategoryID": 1,
+      "QuantityPerUnit": 128,
+      "UnitPrice": 39990,
+      "UnitsInStock": 128,
+      "UnitsOnOrder": 10,
+      "ReorderLevel": 5,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    },
+    {
+      "ProductID": 3,
+      "ProductName": "iPhone 14 Plus 128GB Midnight",
+      "SupplierID": 1,
+      "CategoryID": 1,
+      "QuantityPerUnit": 128,
+      "UnitPrice": 44990,
+      "UnitsInStock": 128,
+      "UnitsOnOrder": 10,
+      "ReorderLevel": 5,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    },
+    {
+      "ProductID": 4,
+      "ProductName": "iPhone 15 Plus 128GB Black",
+      "SupplierID": 1,
+      "CategoryID": 1,
+      "QuantityPerUnit": 128,
+      "UnitPrice": 52990,
+      "UnitsInStock": 128,
+      "UnitsOnOrder": 10,
+      "ReorderLevel": 5,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    },
+    {
+      "ProductID": 5,
+      "ProductName": "iPhone 16 Plus 128GB Black",
+      "SupplierID": 1,
+      "CategoryID": 1,
+      "QuantityPerUnit": 128,
+      "UnitPrice": 62990,
+      "UnitsInStock": 128,
+      "UnitsOnOrder": 10,
+      "ReorderLevel": 5,
+      "Discontinued": false,
+      "CurrencyCode": "Php"
+    }
+  ]
+}

@@ -1,6 +1,107 @@
 <mvc:View controllerName="com.acn.exercise4.controller.MainView"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
+    xmlns="sap.m" 
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core">
+
     <Page id="page" title="{i18n>title}">
+        <Panel id="idPanel1" headerText="Data Binding Basics" class="sapUiResponsiveMargin" width="auto">
+            <f:SimpleForm id="_IDGenSimpleForm">
+                <Label id="idLblEid" text="EID"/>
+                <Input id="idInptEid" enabled="{/Enabled}" value="{/Eid}" valueLiveUpdate="true"/> 
+                <Label id="idLblEnabled" text="Enabled"/>
+                <CheckBox id="idCbEnabled" selected="{/Enabled}"></CheckBox>
+            </f:SimpleForm>
+        </Panel>
+        <Panel id="idPanel2" headerText="Address Details" class="sapUiResponsiveMargin" width="auto">
+            <f:SimpleForm id="_IDGenSimpleForm1">
+                <Label id="idLblAddress" text="Address"/>
+                <Text id="idTxtAddress" text="{/Address/Street} {/Address/Zip} {/Address/City} {/Address/Country}" class="sapUiSmallMarginBottom"></Text>
+                <Text id="idTbSpacer" width="100%"></Text>
+                <!-- <Link text = "Send Email" id="idLink" href="{ path: '/Eid', formatter: '.formatter.formatMail'}" target="_blank" ></Link>   -->
+                <Link id="_IDGenLink" text="Send Email"
+                    href="{
+                        parts: [
+                            { path: '/Eid' },
+                            { path: 'i18n>domain' },
+                            { path: 'i18n>mailSubject' },
+                            { path: 'i18n>mailBody' } ],
+                        formatter: '.formatter.formatMail'
+                        }"
+                    target="_blank"/>
+                <Label id="idLblSlsAmount" text="Sales Amount" class="sapUiSmallMarginBegin"/>
+                <Input id="idInptSlsAmount" class="sapUiSmallMarginBegin" enabled="true" description="{path: '/CurrencyCode'}" width = "30%" 
+                value="{ parts: [ {path: '/SalesAmount'}, {path: '/CurrencyCode'} ], type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false} }"/>
+            </f:SimpleForm>
+        </Panel>
+
+        <Panel id="_IDGenPanel3"
+            headerText="Aggregation Binding"
+            class="sapUiResponsiveMargin"
+            width="auto">
+            
+            <List id="_IDGenList" items="{ProductsModel>/Products}"     
+            mode="SingleSelectMaster"
+            selectionChange="onSelectionChange">
+
+                <ObjectListItem
+                    id="_IDGenObjectListItem1"
+                    title="{ProductsModel>ProductName}"
+                    number="{
+                        parts: [
+                            { path: 'ProductsModel>UnitPrice' },
+                            { path: 'ProductsModel>CurrencyCode' }
+                        ],
+                        type: 'sap.ui.model.type.Currency',
+                        formatOptions: { showMeasure: false }
+                    }"
+                    numberUnit="{ProductsModel>CurrencyCode}">
+
+                    <attributes>
+                        <ObjectAttribute id="_IDGenObjectAttribute1"
+                           title="Stock on Hand"
+                            text="{ProductsModel>QuantityPerUnit}" />
+
+                        <ObjectAttribute id="_IDGenObjectAttribute2"
+                            title="Current Stock Value"
+                            text="{
+                                parts: [
+                                    { path: 'ProductsModel>UnitPrice' },
+                                    { path: 'ProductsModel>UnitsInStock' },
+                                    { path: 'ProductsModel>CurrencyCode' }
+                                ],
+                                formatter: '.formatter.formatStockValue'
+                            }" />
+                    </attributes>
+                </ObjectListItem>
+            </List>
+        </Panel>
+
+        <Panel id="idPanel4" headerText="Product Details" class="sapUiResponsiveMargin" width="auto">
+            <f:SimpleForm id="_IDGenSimpleForm2" >
+                <Label id="idLblProductId" text="Product ID"/>
+                <Input id="idInptProductId" value="{SelectedProduct>/ProductID}" width="40%"/> 
+                <Label id="idLblProductName" text="Product Name"/>
+                <Input id="idInptProductName" value="{SelectedProduct>/ProductName}" width="40%"/> 
+                <Label id="idLblSuppId" text="Product ID"/>
+                <Input id="idInptSuppId" value="{SelectedProduct>/SupplierID}" width="40%"/> 
+                <Label id="idLblCategName" text="Product Name"/>
+                <Input id="idInptCategName" value="{SelectedProduct>/CategoryID}" width="40%"/>
+                <Label id="idLblQtyPerUnit" text="Quantity Per Unit"/>
+                <Input id="idInptQtyPerUnit" value="{SelectedProduct>/QuantityPerUnit}" width="40%"/> 
+                <Label id="idLblUnitPrice" text="Unit Price"/>
+                <Input id="idInptUnitPrice" value="{SelectedProduct>/UnitPrice}" width="40%"/> 
+                <Label id="idLblUnitsInStock" text="Units In Stock"/>
+                <Input id="idInptUnitsInStock" value="{SelectedProduct>/UnitsInStock}" width="40%"/> 
+                <Label id="idLblUnitsOnOrd" text="Units On Order"/>
+                <Input id="idInptUnitsOnOrd" value="{SelectedProduct>/UnitsOnOrder}" width="40%"/>    
+                <Label id="idLblReordLvl" text="Reorder Level"/>
+                <Input id="idInptReordLvl" value="{SelectedProduct>/ReorderLevel}" width="40%"/> 
+                <Label id="idLblDiscont" text="Discontinued"/>
+                <Input id="idInptDiscont" value="{SelectedProduct>/Discontinued}" width="40%"/>          
+                                                                                            
+            </f:SimpleForm>
+        </Panel>
+
     </Page>
 </mvc:View>
